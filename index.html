@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BIOSION | Future Map Pipeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#165cab",
+              "outline-variant": "#c2c6d3",
+              "on-primary": "#ffffff",
+              "surface-tint": "#1a5ead",
+              "surface-container-high": "#e6e8ea",
+              "on-primary-container": "#c1d6ff",
+              "secondary-fixed": "#b7f568",
+              "surface-container-highest": "#e0e3e5",
+              "on-surface": "#191c1e",
+              "tertiary-container": "#00657c",
+              "surface-bright": "#f7f9fb",
+              "surface": "#f7f9fb",
+              "on-secondary-fixed-variant": "#304f00",
+              "primary-fixed-dim": "#a8c8ff",
+              "tertiary-fixed": "#b6ebff",
+              "primary-fixed": "#d6e3ff",
+              "secondary": "#416900",
+              "on-tertiary-fixed": "#001f28",
+              "surface-variant": "#e0e3e5",
+              "on-secondary-fixed": "#102000",
+              "on-surface-variant": "#424751",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#a8c8ff",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary": "#ffffff",
+              "primary": "#004487",
+              "background": "#f7f9fb",
+              "tertiary-fixed-dim": "#47d6ff",
+              "secondary-fixed-dim": "#9cd84f",
+              "on-tertiary-fixed-variant": "#004e60",
+              "outline": "#727783",
+              "on-tertiary-container": "#8ce1ff",
+              "on-secondary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#00468a",
+              "surface-container": "#eceef0",
+              "on-background": "#191c1e",
+              "tertiary": "#004c5d",
+              "error-container": "#ffdad6",
+              "surface-dim": "#d8dadc",
+              "on-primary-fixed": "#001b3c",
+              "on-secondary-container": "#457000",
+              "on-error": "#ffffff",
+              "secondary-container": "#b7f568",
+              "surface-container-lowest": "#ffffff",
+              "inverse-surface": "#2d3133",
+              "inverse-on-surface": "#eff1f3"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .star-orbit {
+            border: 1px dashed rgba(0, 68, 135, 0.15);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .planet-glow {
+            box-shadow: 0 0 20px rgba(65, 105, 0, 0.3);
+        }
+        .clinical-stage-indicator {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-lg dark:bg-slate-950/70">
+<div class="flex justify-between items-center w-full px-12 py-6 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-4">
+<img alt="BIOSION Corporate Logo in professional blue and green tones" class="h-8 w-auto" data-alt="Official BIOSION company logo featuring clean typography and a modern biotech emblem in primary blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDonj5AwS8UjT4o0VaOL77dDorhPRrnj3jwWC9XNnXMdh1lf6WiaTVW_YGQ6V2V-dSu086c2tXWH5gxj0xZzF3Se2gso4rP75f-fnqPDkKsWXakP0AwcHiVLJZTVYhSwuQqzSJcdDoiecG1gTazuOL13J3L_fRJpcCRFagjsj8-e0DOzFQswkgvvjiZsCXmETOZ9oXNSufu0b9t_qhRnZtojeUukGRGcBTf9HqSg7VBT_l6pG7FlTg1syCv1lPq8yuPzQaKHr8oIOn"/>
+<span class="text-2xl font-medium tracking-[-0.02em] text-[#004487] dark:text-white">BIOSION</span>
+</div>
+<div class="hidden md:flex items-center space-x-10">
+<a class="text-[#004487] dark:text-blue-400 font-medium border-b border-[#416900] font-inter tracking-[0.02em] leading-relaxed transition-colors duration-300" href="#">Pipeline</a>
+<a class="text-slate-600 dark:text-slate-400 font-normal hover:text-[#416900] transition-colors duration-300" href="#">Technology</a>
+<a class="text-slate-600 dark:text-slate-400 font-normal hover:text-[#416900] transition-colors duration-300" href="#">Science</a>
+<a class="text-slate-600 dark:text-slate-400 font-normal hover:text-[#416900] transition-colors duration-300" href="#">Partnerships</a>
+<a class="text-slate-600 dark:text-slate-400 font-normal hover:text-[#416900] transition-colors duration-300" href="#">About</a>
+</div>
+<button class="bg-primary text-on-primary px-8 py-2.5 rounded-md font-medium hover:bg-primary-container transition-all duration-300 shadow-sm">
+                Contact Us
+            </button>
+</div>
+</nav>
+<main class="pt-24 min-h-screen">
+<!-- Hero Section: Future Map Header -->
+<section class="px-12 py-16 max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 items-end gap-12">
+<div>
+<span class="label-md uppercase tracking-[0.1em] text-secondary font-semibold mb-4 block">Charting Innovation</span>
+<h1 class="text-6xl font-medium text-primary tracking-[-0.02em] leading-tight">Future Map <br/><span class="text-on-surface-variant font-light">The BIOSION Pipeline</span></h1>
+</div>
+<div class="pb-2">
+<p class="text-lg text-on-surface-variant leading-relaxed max-w-xl">
+                        A dynamic ecosystem of biotherapeutics designed to transform the landscape of immunology and oncology. Explore our cosmic trajectory of discovery.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Pipeline Star System Visualizer -->
+<section class="relative w-full h-[800px] overflow-hidden bg-surface-container-low flex items-center justify-center">
+<!-- Central Discovery Core (Sun) -->
+<div class="absolute z-10 w-48 h-48 rounded-full bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-white text-center p-6 shadow-2xl">
+<div>
+<div class="text-xs uppercase tracking-widest opacity-80 mb-1">Source</div>
+<div class="text-xl font-bold">R&amp;D CORE</div>
+<div class="mt-2 h-0.5 w-12 bg-secondary mx-auto"></div>
+</div>
+</div>
+<!-- Orbiting Rings -->
+<div class="star-orbit w-[300px] h-[300px]"></div>
+<div class="star-orbit w-[500px] h-[500px]"></div>
+<div class="star-orbit w-[750px] h-[750px]"></div>
+<div class="star-orbit w-[1000px] h-[1000px]"></div>
+<!-- Stage Labels -->
+<div class="absolute top-[40%] left-[calc(50%+160px)] text-[10px] font-bold tracking-[0.2em] text-primary/40 uppercase">Pre-Clinical</div>
+<div class="absolute top-[35%] left-[calc(50%+260px)] text-[10px] font-bold tracking-[0.2em] text-primary/40 uppercase">Phase I</div>
+<div class="absolute top-[30%] left-[calc(50%+385px)] text-[10px] font-bold tracking-[0.2em] text-primary/40 uppercase">Phase II</div>
+<div class="absolute top-[25%] left-[calc(50%+510px)] text-[10px] font-bold tracking-[0.2em] text-primary/40 uppercase">Phase III</div>
+<!-- Drug "Planets" (Interactive Elements) -->
+<!-- BSI-047 (Phase III - Largest) -->
+<div class="absolute top-[20%] left-[65%] group cursor-pointer">
+<div class="relative w-24 h-24 rounded-full bg-secondary planet-glow flex items-center justify-center text-white transition-transform duration-500 group-hover:scale-110">
+<span class="text-sm font-bold">BSI-047</span>
+<!-- Decorative Ring -->
+<div class="absolute -inset-2 border border-secondary/30 rounded-full animate-pulse"></div>
+</div>
+<div class="mt-4 bg-white/90 backdrop-blur p-4 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-48 border border-outline-variant/20">
+<div class="text-xs font-bold text-secondary uppercase tracking-wider mb-1">Lead Candidate</div>
+<div class="text-sm font-medium text-primary">Target: Trop2/HER3</div>
+<div class="text-[10px] text-on-surface-variant mt-2">Currently in Global Phase III trials for advanced solid tumors.</div>
+</div>
+</div>
+<!-- BSI-060 (Phase II) -->
+<div class="absolute top-[60%] left-[75%] group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-primary-container planet-glow flex items-center justify-center text-white transition-transform duration-500 group-hover:scale-110">
+<span class="text-[11px] font-bold">BSI-060</span>
+</div>
+<div class="mt-4 bg-white/90 backdrop-blur p-4 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-48 border border-outline-variant/20">
+<div class="text-xs font-bold text-primary uppercase tracking-wider mb-1">Phase II</div>
+<div class="text-sm font-medium text-primary">Target: Anti-Siglec-15</div>
+</div>
+</div>
+<!-- BSI-082 (Phase I) -->
+<div class="absolute top-[75%] left-[40%] group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-primary planet-glow flex items-center justify-center text-white transition-transform duration-500 group-hover:scale-110">
+<span class="text-[9px] font-bold text-center">BSI-082</span>
+</div>
+<div class="mt-4 bg-white/90 backdrop-blur p-4 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-48 border border-outline-variant/20">
+<div class="text-xs font-bold text-primary uppercase tracking-wider mb-1">Phase I</div>
+<div class="text-sm font-medium text-primary">Target: Claudin 18.2</div>
+</div>
+</div>
+<!-- Pre-clinical clusters -->
+<div class="absolute top-[45%] left-[38%] w-6 h-6 rounded-full bg-primary/40"></div>
+<div class="absolute top-[55%] left-[42%] w-4 h-4 rounded-full bg-primary/40"></div>
+<div class="absolute top-[40%] left-[48%] w-8 h-8 rounded-full bg-primary/40 flex items-center justify-center text-[8px] text-white">BSI-091</div>
+<!-- Abstract Data Streams -->
+<div class="absolute bottom-12 right-12 text-right">
+<div class="text-6xl font-black text-primary/5 tracking-tighter uppercase">Bio-Logic</div>
+<div class="text-secondary font-bold tracking-[0.3em] uppercase text-xs">Innovation Trajectory</div>
+</div>
+</section>
+<!-- Bento Grid: Pipeline Metrics & Highlights -->
+<section class="px-12 py-24 max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Highlight 1: Clinical Success -->
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-xl shadow-sm border-l-4 border-secondary flex flex-col justify-between h-[400px]">
+<div>
+<span class="material-symbols-outlined text-secondary text-4xl mb-6">science</span>
+<h3 class="text-3xl font-medium text-primary mb-4 tracking-tight">SynTracer™ Platform Integration</h3>
+<p class="text-on-surface-variant leading-relaxed">Our proprietary high-throughput antibody screening technology fuels 100% of our internal pipeline, ensuring precision from day zero.</p>
+</div>
+<div class="flex items-center gap-8 mt-8">
+<div>
+<div class="text-4xl font-bold text-primary">12+</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Candidates</div>
+</div>
+<div class="h-10 w-[1px] bg-outline-variant/30"></div>
+<div>
+<div class="text-4xl font-bold text-primary">4</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Clinical Trials</div>
+</div>
+</div>
+</div>
+<!-- Highlight 2: Strategic Image -->
+<div class="md:col-span-2 relative overflow-hidden rounded-xl h-[400px]">
+<img alt="Close-up of laboratory professional with glowing interface" class="absolute inset-0 w-full h-full object-cover" data-alt="high-tech laboratory environment with a scientist analyzing holographic molecular structures in cool blue and white tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaWmIgQMoZmsuzvRH-ry5SEstp2mBoasMnWREagAcUhHxl9U43ptr7e3oRTE9b6ju5v_af2wbpJp-lTT3wjxiU8MXrTYymz1jXAqO7Sf24dYdPfUfncuBZhnRyq0D8tZdIVF6SnpIajp03CokQn5FCvvQvulYSRBet2RcFyMcFbicHF0fzaTUdB-Z3KDrvs1jJG7k3LjE5FXE9A4TUULcm20g4OR6uV7nUoW_vTbnJ2qyfuXgaGsiynLO7ur4h-88WNJdSfbC61aRU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent p-10 flex flex-col justify-end">
+<h4 class="text-2xl font-bold text-white mb-2">Global Partnerships</h4>
+<p class="text-white/80 text-sm max-w-sm">Collaborating with world-class biopharma leaders to accelerate the delivery of breakthrough therapies.</p>
+</div>
+</div>
+<!-- Highlight 3: Small Stats -->
+<div class="bg-surface-container p-8 rounded-xl flex flex-col justify-center text-center">
+<div class="text-secondary font-bold text-5xl mb-2">98%</div>
+<div class="text-xs uppercase tracking-[0.2em] text-on-surface-variant">Target Specificity</div>
+</div>
+<!-- Highlight 4: Clinical Flow -->
+<div class="md:col-span-3 bg-primary p-10 rounded-xl text-white flex items-center justify-between gap-8">
+<div class="max-w-md">
+<h3 class="text-2xl font-bold mb-4">Advance with Purpose</h3>
+<p class="text-white/70 mb-6">Each BSI series candidate represents a leap toward curing intractable autoimmune diseases and refractory cancers.</p>
+<button class="flex items-center gap-2 group text-secondary-fixed font-bold hover:text-white transition-colors">
+                            VIEW FULL CLINICAL DATA
+                            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+<div class="hidden lg:block">
+<div class="flex gap-2">
+<div class="w-1 bg-white/20 h-24 rounded-full"></div>
+<div class="w-1 bg-white/40 h-24 rounded-full"></div>
+<div class="w-1 bg-secondary h-24 rounded-full"></div>
+<div class="w-1 bg-white/40 h-24 rounded-full"></div>
+<div class="w-1 bg-white/20 h-24 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic List Section (Traditional Backup) -->
+<section class="px-12 py-24 bg-surface-container-low">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex justify-between items-center mb-16">
+<h2 class="text-4xl font-medium text-primary">Priority Programs</h2>
+<div class="flex gap-4">
+<span class="px-4 py-2 bg-white rounded-full text-xs font-bold border border-outline-variant/20">ALL THERAPIES</span>
+<span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-xs font-bold border border-secondary/20">ONCOLOGY</span>
+<span class="px-4 py-2 bg-white rounded-full text-xs font-bold border border-outline-variant/20">IMMUNOLOGY</span>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Row 1 -->
+<div class="bg-white p-8 rounded-xl flex items-center justify-between transition-all hover:translate-x-2 border-l-4 border-transparent hover:border-secondary">
+<div class="flex items-center gap-12 flex-1">
+<div class="text-2xl font-bold text-primary w-24">BSI-047</div>
+<div>
+<div class="text-sm font-bold text-on-surface-variant uppercase tracking-widest mb-1">Indication</div>
+<div class="text-lg font-medium">Metastatic Breast Cancer</div>
+</div>
+<div>
+<div class="text-sm font-bold text-on-surface-variant uppercase tracking-widest mb-1">Mechanism</div>
+<div class="text-lg font-medium">Trop2/HER3 ADC</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="px-4 py-1.5 bg-secondary text-white text-[10px] font-bold rounded-full">PHASE III</span>
+<span class="material-symbols-outlined text-primary/40">expand_more</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="bg-white p-8 rounded-xl flex items-center justify-between transition-all hover:translate-x-2 border-l-4 border-transparent hover:border-secondary">
+<div class="flex items-center gap-12 flex-1">
+<div class="text-2xl font-bold text-primary w-24">BSI-060</div>
+<div>
+<div class="text-sm font-bold text-on-surface-variant uppercase tracking-widest mb-1">Indication</div>
+<div class="text-lg font-medium">Multiple Myeloma</div>
+</div>
+<div>
+<div class="text-sm font-bold text-on-surface-variant uppercase tracking-widest mb-1">Mechanism</div>
+<div class="text-lg font-medium">Anti-Siglec-15 mAb</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="px-4 py-1.5 bg-primary-container text-white text-[10px] font-bold rounded-full uppercase">Phase II</span>
+<span class="material-symbols-outlined text-primary/40">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f7f9fb] dark:bg-slate-900 border-t-0">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-[1440px] mx-auto">
+<div class="md:col-span-1">
+<div class="text-xl font-bold text-[#004487] dark:text-white uppercase tracking-widest mb-6">BIOSION</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-[1.6] mb-8">Pioneering the next generation of biotherapeutics through clinical-driven research and strategic innovation.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-secondary transition-colors">language</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-secondary transition-colors">share</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-2">Discover</h5>
+<a class="text-slate-500 dark:text-slate-400 text-sm hover:text-[#416900] transition-all" href="#">Investor Relations</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm hover:text-[#416900] transition-all" href="#">Career Portal</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm hover:text-[#416900] transition-all" href="#">Global Locations</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-2">Legal</h5>
+<a class="text-slate-500 dark:text-slate-400 text-sm hover:text-[#416900] transition-all" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm hover:text-[#416900] transition-all" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-2">Subscribe</h5>
+<div class="relative">
+<input class="w-full bg-surface-container-highest/50 border-none rounded-md px-4 py-3 text-sm focus:ring-1 focus:ring-primary transition-all" placeholder="Email for scientific updates" type="email"/>
+<button class="absolute right-2 top-2 material-symbols-outlined text-primary">arrow_forward</button>
+</div>
+</div>
+</div>
+<div class="max-w-[1440px] mx-auto px-12 pb-12">
+<div class="border-t border-outline-variant/10 pt-8 flex flex-col md:flex-row justify-between gap-4">
+<div class="text-slate-500 dark:text-slate-400 text-sm font-inter tracking-wide">© 2024 BIOSION, Inc. Pioneering Biotherapeutics.</div>
+<div class="flex gap-8 text-[11px] font-bold text-primary/60 uppercase tracking-widest">
+<span>Nanjing</span>
+<span>Delaware</span>
+<span>Shanghai</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
